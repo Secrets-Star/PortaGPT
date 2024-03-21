@@ -22,7 +22,6 @@ while True:
         resp = result.decode('utf-8')
 #text to speach
         //TODO: make say_text the real one
-os.system('bash -c python -m TTS.server.server')
 
 
 # Define the URL for the text-to-speech API
