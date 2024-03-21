@@ -3,9 +3,10 @@ from gpiozero import LED
 from gpiozero import Button
 import urllib.request
 import os
+import requests
+#speach to text
 
 #rest apt
-//TODO: make result.decode('utf-8') a varible resp
 //TODO: make the varibvle prompt the real one
 url = "http://localhost:11434/api/generate"
 
@@ -18,4 +19,20 @@ while True:
 
     with urllib.request.urlopen(req) as response:
         result = response.read()
-        print(result.decode('utf-8'))
+        resp = result.decode('utf-8')
+#text to speach
+        //TODO: make say_text the real one
+os.system('bash -c python -m TTS.server.server')
+
+
+# Define the URL for the text-to-speech API
+url = f'http://localhost:5002/api/tts'
+
+# Prompt the user for input
+say_text = input('What should I say? ')
+
+# Send the input text to the API and save the response as a WAV file
+response = requests.get(url, params={'text': say_text})
+with open('response.wav', 'wb') as f:
+    f.write(response.content)
+print(f'saved wav for {url}')
