@@ -49,5 +49,8 @@ cd .. # so you’re back in TTS directory
 mkdir -p server/model/tts
 cp wheels/TTS/server/model/tts/checkpoint.pth.tar ../server/model/tts/
 cp wheels/TTS/server/model/tts/config.json ../server/model/tts/
+cd ..#so you are back in the main directory
 cd ollama
 ollama pull gemma:7b
+pip install vosk
+ollama create portagpt -f ./Modelfile
