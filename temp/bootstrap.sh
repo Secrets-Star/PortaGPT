@@ -1,11 +1,11 @@
-sudo apt update
-sudo apt full-upgrade
-sudo reboot
-sudo apt install git python3-venv libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools libatomic-ops-dev llvm espeak libsndfile1 libzstd1 liblcms2–2 libjbig0 libopenjp2–7 libwebpdemux2 libtiff5 libwebpmux3 libwebp6 libatlas3-base
+sudo bash -c curl -fsSL https://ollama.com/install.sh | sh
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install git python3-venv libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools libatomic-ops-dev llvm espeak libsndfile1 libzstd1 liblcms2–2 libjbig0 libopenjp2–7 libwebpdemux2 libtiff5 libwebpmux3 libwebp6 libatlas3-base -y
 git clone — single-branch — branch master https://github.com/mozilla/TTS.git
 cd TTS
 git checkout 2e2221f
-sudo apt install python3-venv
+sudo apt install python3-venv -y
 python3 -m venv venv
 source venv/bin/activate
 which python
@@ -29,16 +29,16 @@ sed -i ‘/set(CMAKE_EXPORT_COMPILE_COMMANDS ON)/a set(CMAKE_CXX_FLAGS “${CMAK
 python setup.py build
 python setup.py install
 cd ..
-sudo apt install llvm
+sudo apt install llvm -y
 llvm-config — version
 llvm-config — libdir
 which llvm-config
 LLVM_CONFIG=/usr/bin/llvm-config pip install llvmlite
-sudo apt install libatlas3-base
+sudo apt install libatlas3-base -y
 pip install numba==0.49.0
 pip install librosa==0.6.2
-sudo apt install espeak libsndfile1
-sudo apt install libzstd1 liblcms2–2 libjbig0 libopenjp2–7 libwebpdemux2 libtiff5 libwebpmux3 libwebp6
+sudo apt install espeak libsndfile1 -y
+sudo apt install libzstd1 liblcms2–2 libjbig0 libopenjp2–7 libwebpdemux2 libtiff5 libwebpmux3 libwebp6 -y
 cd TTS
 python setup.py develop — no-deps
 mkdir wheels
@@ -49,5 +49,12 @@ cd .. # so you’re back in TTS directory
 mkdir -p server/model/tts
 cp wheels/TTS/server/model/tts/checkpoint.pth.tar ../server/model/tts/
 cp wheels/TTS/server/model/tts/config.json ../server/model/tts/
+cd ..#so you are back in the main directory
 cd ollama
 ollama pull gemma:7b
+pip install vosk
+ollama create portagpt -f ./Modelfile
+cd ..
+mkdir vosk
+cd vosk
+wget https://alphacephei.com/vosk/models/vosk-model-cn-0.22.zip
