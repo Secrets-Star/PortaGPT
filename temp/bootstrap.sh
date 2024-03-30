@@ -1,4 +1,5 @@
 sudo bash -c curl -fsSL https://ollama.com/install.sh | sh
+sudo apt install arecord
 sudo apt update -y
 sudo apt full-upgrade -y
 sudo apt install git python3-venv libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools libatomic-ops-dev llvm espeak libsndfile1 libzstd1 liblcms2–2 libjbig0 libopenjp2–7 libwebpdemux2 libtiff5 libwebpmux3 libwebp6 libatlas3-base -y
