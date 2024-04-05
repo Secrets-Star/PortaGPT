@@ -1,0 +1,4 @@
+os
+gpiozero
+urllib
+requests
