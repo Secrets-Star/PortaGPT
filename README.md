@@ -5,3 +5,6 @@ Still developing
 
 
 don't look
+
+plan:
+use https://github.com/2noise/ChatTTS
